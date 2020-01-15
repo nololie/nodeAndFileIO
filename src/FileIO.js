@@ -37,7 +37,7 @@ function load(fullName) {
         if(err){
             throw err;
         }else{
-            console.log(data.fullName);
+            console.log(data);
         }
     })
     return this;
@@ -49,14 +49,14 @@ let bob = new Visitor('bob_marley', 24, '14/01/2020', '13:00', "he seems alright
 let charlie = new Visitor('charlie_sheen', 19, '14/01/2020', '14:00', 'Interesting', 'Sbonelo');
 
 // CALL object.save
-// alice.save();
-// bob.save();
-// charlie.save();
+alice.save();
+bob.save();
+charlie.save();
 
-// // CALL load
-// load('alice cooper')
-// load('bob marley');
-// load('charlie sheen');
+// CALL load
+load('alice cooper')
+load('bob marley');
+load('charlie sheen');
 
 module.exports = {
     Visitor,
