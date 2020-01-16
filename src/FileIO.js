@@ -17,14 +17,12 @@ const Visitor = class {
      *The file name should be named like this visitor_{their_full_name}.json
     */
     async save() {
-        fs.writeFile('visitor_' + this.fullName + '.json', JSON.stringify(this, null, 4), (err) => {
+        fs.writeFile('Visitors/visitor_' + this.fullName + '.json', JSON.stringify(this, null, 4), (err) => {
             if (err) {
                 throw err;
             }
         });
-        return this;
     }
-    
 }
 
 /*
@@ -33,30 +31,29 @@ const Visitor = class {
 */
 function load(fullName) {
     let name = fullName.replace(' ', '_')
-    fs.readFile('visitor_' + name +'.json', 'utf8', (err, data) => {
+    fs.readFile('Visitors/visitor_' + name +'.json', 'utf8', (err, data) => {
         if(err){
             throw err;
         }else{
             console.log(data);
         }
     })
-    return this;
 }
 
-// CREATE objects
-let alice = new Visitor('alice_cooper', 21, '13/01/2020', '12:00', 'amazing', 'Sbonelo');
-let bob = new Visitor('bob_marley', 24, '14/01/2020', '13:00', "he seems alright", 'Sbonelo');
-let charlie = new Visitor('charlie_sheen', 19, '14/01/2020', '14:00', 'Interesting', 'Sbonelo');
+// // CREATE objects
+// let alice = new Visitor('alice_cooper', 21, '13/01/2020', '12:00', 'amazing', 'Sbonelo');
+// let bob = new Visitor('bob_marley', 24, '14/01/2020', '13:00', "he seems alright", 'Sbonelo');
+// let charlie = new Visitor('charlie_sheen', 19, '14/01/2020', '14:00', 'Interesting', 'Sbonelo');
 
-// CALL object.save
-alice.save();
-bob.save();
-charlie.save();
+// // CALL object.save
+// alice.save();
+// bob.save();
+// charlie.save();
 
-// CALL load
-load('alice cooper')
-load('bob marley');
-load('charlie sheen');
+// // CALL load
+// load('alice cooper')
+// load('bob marley');
+// load('charlie sheen');
 
 module.exports = {
     Visitor,
