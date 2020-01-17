@@ -17,7 +17,7 @@ const Visitor = class {
      *The file name should be named like this visitor_{their_full_name}.json
     */
     async save() {
-        fs.writeFile('Visitors/visitor_' + this.fullName + '.json', JSON.stringify(this, null, 4), (err) => {
+        fs.writeFile('visitor_' + this.fullName + '.json', JSON.stringify(this, null, 4), (err) => {
             if (err) {
                 throw err;
             }
@@ -31,7 +31,7 @@ const Visitor = class {
 */
 function load(fullName) {
     let name = fullName.replace(' ', '_')
-    fs.readFile('Visitors/visitor_' + name +'.json', 'utf8', (err, data) => {
+    fs.readFile('visitor_' + name +'.json', 'utf8', (err, data) => {
         if(err){
             throw err;
         }else{

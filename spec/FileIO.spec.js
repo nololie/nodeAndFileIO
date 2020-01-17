@@ -1,4 +1,5 @@
 let visitor = require('../src/FileIO.js')
+fs = require('fs')
 
 describe('function save()', () => {
     let alice = new visitor.Visitor('alice_cooper', 21, '13/01/2020', '12:00', 'amazing', 'Sbonelo')
@@ -8,19 +9,22 @@ describe('function save()', () => {
     })
 
     alice.save()
-
+    
     it('creates named files', () => {
-        aliceFile = require('../Visitors/visitor_alice_cooper.json')
+        aliceFile = require('../visitor_alice_cooper.json')
         expect(aliceFile).toBeDefined()
     })
 
     it("writes a visitor's content to a respectively named file", () => {
-        let fs = require('fs')
-        fs.readFile('../Visitors/visitor_alice_cooper.json', (err, data) =>{
-            let jsonData = JSON.parse(data)
-            expect(JSON.stringify(jsonData)).toEqual(JSON.stringify(alice))
+        fs.readFile('visitor_alice_cooper.json', 'UTF8', (err, data) =>{
+            if(err){throw err}
+            else{
+                let readData = data
+                expect(readData).toEqual(JSON.stringify(alice, null, 4))
+            }
         })
     })
+
 })
 
 describe('function load()', () => {
