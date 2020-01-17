@@ -40,21 +40,6 @@ function load(fullName) {
     })
 }
 
-// // CREATE objects
-// let alice = new Visitor('alice_cooper', 21, '13/01/2020', '12:00', 'amazing', 'Sbonelo');
-// let bob = new Visitor('bob_marley', 24, '14/01/2020', '13:00', "he seems alright", 'Sbonelo');
-// let charlie = new Visitor('charlie_sheen', 19, '14/01/2020', '14:00', 'Interesting', 'Sbonelo');
-
-// // CALL object.save
-// alice.save();
-// bob.save();
-// charlie.save();
-
-// // CALL load
-// load('alice cooper')
-// load('bob marley');
-// load('charlie sheen');
-
 module.exports = {
     Visitor,
     load
