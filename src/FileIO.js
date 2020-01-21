@@ -41,6 +41,5 @@ function load(fullName) {
 }
 
 module.exports = {
-    Visitor,
-    load
+    Visitor
 }

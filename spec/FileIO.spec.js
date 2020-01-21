@@ -1,34 +1,29 @@
-let visitor = require('../src/FileIO.js')
-fs = require('fs')
+let {Visitor} = require('../src/FileIO.js')
 
 describe('function save()', () => {
-    let alice = new visitor.Visitor('alice_cooper', 21, '13/01/2020', '12:00', 'amazing', 'Sbonelo')
+    let alice = new Visitor('alice_cooper', 21, '13/01/2020', '12:00', 'amazing', 'Sbonelo')
     
     it('exists', () => {
         expect(alice.save).toBeDefined()
     })
-
-    alice.save()
     
-    it('creates named files', () => {
-        aliceFile = require('../visitor_alice_cooper.json')
-        expect(aliceFile).toBeDefined()
-    })
-
     it("writes a visitor's content to a respectively named file", () => {
+        fs = require('fs')
+
+        alice.save()
+        
         fs.readFile('visitor_alice_cooper.json', 'UTF8', (err, data) =>{
-            if(err){throw err}
+            if(err)throw err
             else{
-                let readData = data
-                expect(readData).toEqual(JSON.stringify(alice, null, 4))
+                let readData = JSON.parse(data)
+                expect(readData.fullName).toEqual('alice_cooper')
+                expect(readData.age).toEqual(21)
+                expect(readData.date).toEqual('13/01/2020')
+                expect(readData.time).toEqual('12:00')
+                expect(readData.comments).toEqual('amazing')
+                expect(readData.person).toEqual('Sbonelo')
+
             }
         })
-    })
-
-})
-
-describe('function load()', () => {
-    it('exists', () => {
-        expect(visitor.load).toBeDefined()
     })
 })
